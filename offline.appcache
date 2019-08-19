@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v3
+# v4
 https://mickpet23.github.io/appCacheStaples/index.html
 https://mickpet23.github.io/appCachStaples/styles.css
 
@@ -7,4 +7,4 @@ NETWORK:
 *
 
 FALLBACK:
-/ fallback.html
+/index.html /fallback.html
