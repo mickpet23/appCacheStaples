@@ -7,4 +7,4 @@ NETWORK:
 *
 
 FALLBACK:
-/index.html /fallback.html
+/index.html fallback.html
