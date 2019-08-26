@@ -9,10 +9,27 @@
 	<input type="text">
 	<button>Add</button>
 	<ul>
-		<li>milk</li>
+		<li>milk<button>Delete</button></li>
 	</ul>
 	<script type="text/javascript">
-		console.log('qwz')
+		const addButton = document.getElementsByTagName('button')[0];
+		const inputEl = document.getElementsByTagName('input')[0];
+		const ulEl = document.getElementsByTagName('ul')[0];
+
+		addButton.addEventListener('click', () => {
+			let newLI = document.createElement('li');
+			newLI.appendChild(document.createTextNode(inputEl.value));
+			let deleteButton = document.createElement('button');
+			deleteButton.appendChild(document.createTextNode('Delete'));
+			newLI.appendChild(deleteButton);	
+			ulEl.appendChild(newLI);
+
+			inputEl.value = '';
+
+			deleteButton.addEventListener('click', () => {
+				ulEl.removeChild(deleteButton.parentElement);
+			})
+		})
 	</script>
 </body>
 </html>
