@@ -9,25 +9,31 @@
 	<input type="text">
 	<button>Add</button>
 	<ul>
-		<li>milk<button>Delete33</button></li>
+		<li>milk<button>Delete34</button></li>
 	</ul>
-	<script type="module">
+	<script type="text/javascript">
+		/*
+		//import from 'https://unpkg' causes errors in ios 10.3 safari.
+		//TODO: try to get this to work
 		import { openDB, deleteDB } from 'https://unpkg.com/idb?module';
 
-		// let dbPromise = openDB('grocery-db', 1, {
-		// 	upgrade(dbPromise, oldVersion, newVersion, transaction) {
-		// 		switch(oldVersion) {
-		// 			case 0:
-		// 			dbPromise.createObjectStore('staples', {keyPath: 'item'});
-		// 		}
-		// 	}
-		// })
+		let dbPromise = openDB('grocery-db', 1, {
+			upgrade(dbPromise, oldVersion, newVersion, transaction) {
+				switch(oldVersion) {
+					case 0:
+					dbPromise.createObjectStore('staples', {keyPath: 'item'});
+				}
+			}
+		})
 
-		// dbPromise.then(db => {
-		// 	let tx = db.transaction('staples', 'readwrite');
-		// 	let staplesStore = tx.objectStore('staples');
-		// 	staplesStore.put({item: 'milk'})
-		// })
+		dbPromise.then(db => {
+			let tx = db.transaction('staples', 'readwrite');
+			let staplesStore = tx.objectStore('staples');
+			staplesStore.put({item: 'milk'})
+		})
+		*/
+
+		localStorage.setItem('mydog', 'Machomon');
 
 		const addButton = document.getElementsByTagName('button')[0];
 		const inputEl = document.getElementsByTagName('input')[0];
@@ -48,6 +54,5 @@
 			})
 		})
 	</script>
-	<script type="text/javascript" src="app.js"></script>
 </body>
 </html>
