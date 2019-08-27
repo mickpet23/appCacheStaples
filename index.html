@@ -12,6 +12,7 @@
 		<li>milk<button>Delete</button></li>
 	</ul>
 	<script type="module">
+		console.log('test');
 		import { openDB, deleteDB } from 'https://unpkg.com/idb?module';
 
 		let dbPromise = openDB('grocery-db', 1, {
