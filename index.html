@@ -9,7 +9,7 @@
 	<input type="text">
 	<button>Add</button>
 	<ul>
-		<li>milk<button>Delete34</button></li>
+		<li>milk<button>Delete35</button></li>
 	</ul>
 	<script type="text/javascript">
 		/*
@@ -33,7 +33,7 @@
 		})
 		*/
 
-		localStorage.setItem('mydog', 'Machomon');
+		//localStorage.setItem('mydog', 'Machomon');
 
 		const addButton = document.getElementsByTagName('button')[0];
 		const inputEl = document.getElementsByTagName('input')[0];
@@ -46,6 +46,8 @@
 			deleteButton.appendChild(document.createTextNode('Delete'));
 			newLI.appendChild(deleteButton);	
 			ulEl.appendChild(newLI);
+
+			localStorage.setItem('item1', inputEl.value);
 
 			inputEl.value = '';
 
