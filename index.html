@@ -34,6 +34,17 @@
 		*/
 
 		//localStorage.setItem('mydog', 'Machomon');
+		//localStorage.removeItem('mydog');
+		
+		//let itemsArray;
+		// if (localStorage.getItem('items')) {
+		// 	itemsArray = JSON.parse(localStorage.getItem('items'));
+		// } else {
+		// 	itemsArray = [];
+		// 	localStorage.setItem('items', JSON.stringify(itemsArray));
+		// }
+
+		let itemsArray = [];
 
 		const addButton = document.getElementsByTagName('button')[0];
 		const inputEl = document.getElementsByTagName('input')[0];
@@ -47,7 +58,8 @@
 			newLI.appendChild(deleteButton);	
 			ulEl.appendChild(newLI);
 
-			localStorage.setItem('item1', inputEl.value);
+			itemsArray.push(inputEl.value);
+			localStorage.setItem('items', JSON.stringify(itemsArray);
 
 			inputEl.value = '';
 
