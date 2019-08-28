@@ -5,7 +5,7 @@
 	<title>AppCache Staples</title>
 </head>
 <body>
-	<h1>Grocery Staples 38</h1>
+	<h1>Grocery Staples 39</h1>
 	<input type="text">
 	<button>Add</button>
 	<ul></ul>
@@ -31,50 +31,41 @@
 		})
 		*/
 
-		//localStorage.setItem('mydog', 'Machomon');
-		//localStorage.removeItem('mydog');
-
 		const addButton = document.getElementsByTagName('button')[0];
 		const inputEl = document.getElementsByTagName('input')[0];
 		const ulEl = document.getElementsByTagName('ul')[0];
+		const addli = (item) => {
+			let newLi = document.createElement('li');
+			newLi.appendChild(document.createTextNode(item));
+			let deleteButton = document.createElement('button');
+			deleteButton.appendChild(document.createTextNode('Delete'));
+			newLi.appendChild(deleteButton);
+			ulEl.appendChild(newLi);
+			deleteButton.addEventListener('click', () => {
+				itemsArray = itemsArray.filter(el => {
+					return el != deleteButton.parentElement.childNodes[0].textContent
+				})
+				localStorage.setItem('items', JSON.stringify(itemsArray));					
+				ulEl.removeChild(deleteButton.parentElement);
+			})			
+		}
 
 		let itemsArray;
 		if (localStorage.getItem('items')) {
 			itemsArray = JSON.parse(localStorage.getItem('items'));
 			itemsArray.map(item => {
-				let newLi = document.createElement('li');
-				newLi.appendChild(document.createTextNode(item));
-				let deleteButton = document.createElement('button');
-				deleteButton.appendChild(document.createTextNode('Delete'));
-				newLi.appendChild(deleteButton);
-				ulEl.appendChild(newLi);
-				deleteButton.addEventListener('click', () => {
-					ulEl.removeChild(deleteButton.parentElement);
-				})
+				addli(item);
 			})
 		} else {
 			itemsArray = [];
 			localStorage.setItem('items', JSON.stringify(itemsArray));
 		}
 
-
-
 		addButton.addEventListener('click', () => {
-			let newLI = document.createElement('li');
-			newLI.appendChild(document.createTextNode(inputEl.value));
-			let deleteButton = document.createElement('button');
-			deleteButton.appendChild(document.createTextNode('Delete'));
-			newLI.appendChild(deleteButton);	
-			ulEl.appendChild(newLI);
-
+			addli(inputEl.value);
 			itemsArray.push(inputEl.value);
 			localStorage.setItem('items', JSON.stringify(itemsArray));
-
 			inputEl.value = '';
-
-			deleteButton.addEventListener('click', () => {
-				ulEl.removeChild(deleteButton.parentElement);
-			})
 		})
 	</script>
 </body>
