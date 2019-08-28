@@ -1,5 +1,8 @@
 body {
 	background: orange;
 	text-align: center;
-	font-size: xx-large;
+}
+
+li {
+	font-size: 40px;
 }
