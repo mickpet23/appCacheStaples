@@ -5,12 +5,10 @@
 	<title>AppCache Staples</title>
 </head>
 <body>
-	<h1>Grocery Staples</h1>
+	<h1>Grocery Staples 38</h1>
 	<input type="text">
 	<button>Add</button>
-	<ul>
-		<li>milk<button>Delete37</button></li>
-	</ul>
+	<ul></ul>
 	<script type="text/javascript">
 		/*
 		//import from 'https://unpkg' causes errors in ios 10.3 safari.
@@ -35,20 +33,31 @@
 
 		//localStorage.setItem('mydog', 'Machomon');
 		//localStorage.removeItem('mydog');
-		
-		//let itemsArray;
-		// if (localStorage.getItem('items')) {
-		// 	itemsArray = JSON.parse(localStorage.getItem('items'));
-		// } else {
-		// 	itemsArray = [];
-		// 	localStorage.setItem('items', JSON.stringify(itemsArray));
-		// }
-
-		let itemsArray = [];
 
 		const addButton = document.getElementsByTagName('button')[0];
 		const inputEl = document.getElementsByTagName('input')[0];
 		const ulEl = document.getElementsByTagName('ul')[0];
+
+		let itemsArray;
+		if (localStorage.getItem('items')) {
+			itemsArray = JSON.parse(localStorage.getItem('items'));
+			itemsArray.map(item => {
+				let newLi = document.createElement('li');
+				newLi.appendChild(document.createTextNode(item));
+				let deleteButton = document.createElement('button');
+				deleteButton.appendChild(document.createTextNode('Delete'));
+				newLi.appendChild(deleteButton);
+				ulEl.appendChild(newLi);
+				deleteButton.addEventListener('click', () => {
+					ulEl.removeChild(deleteButton.parentElement);
+				})
+			})
+		} else {
+			itemsArray = [];
+			localStorage.setItem('items', JSON.stringify(itemsArray));
+		}
+
+
 
 		addButton.addEventListener('click', () => {
 			let newLI = document.createElement('li');
